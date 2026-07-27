@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>بابیس نت | ورود / ثبت‌نام</title>
+
+    <meta name="theme-color" content="#071A35">
+
+    <link rel="stylesheet" href="form.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Card -->
+    <div class="login-card">
+
+        <!-- Logo -->
+        <div class="logo">
+            <img src="logo.png" alt="بابیس نت">
+            <h1>بابیس نت</h1>
+            <p id="subtitleText">پیش‌بینی کن، رقابت کن، جایزه ببر</p>
+        </div>
+
+        <!-- ====== فرم ====== -->
+        <form id="authForm">
+
+            <!-- ====== شماره تلفن ====== -->
+            <div class="input-box" id="phoneGroup">
+                <i class="fa-solid fa-phone"></i>
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="شماره تلفن"
+                    required>
+            </div>
+
+            <!-- ====== نام کامل (فقط ثبت‌نام) ====== -->
+            <div class="input-box" id="fullnameGroup" style="display:none;">
+                <i class="fa-solid fa-user"></i>
+                <input
+                    type="text"
+                    id="fullname"
+                    placeholder="نام و نام خانوادگی">
+            </div>
+
+            <!-- ====== رمز عبور ====== -->
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="رمز عبور"
+                    required>
+                <button type="button" class="show-password" id="togglePassword">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+            </div>
+
+            <!-- ====== کد یکبار مصرف (فقط ثبت‌نام) ====== -->
+            <div class="input-box" id="codeGroup" style="display:none;">
+                <i class="fa-solid fa-key"></i>
+                <input
+                    type="text"
+                    id="verifyCode"
+                    placeholder="کد یکبار مصرف را وارد کنید"
+                    maxlength="6">
+            </div>
+
+            <!-- ====== تایمر کد (فقط ثبت‌نام) ====== -->
+            <div id="timerGroup" style="display:none; text-align:center; color:#91a6c5; font-size:13px; margin-bottom:12px;">
+                <span>زمان باقی‌مانده: </span>
+                <span id="timerDisplay">02:00</span>
+            </div>
+
+            <!-- ====== گزینه‌ها (فقط ورود) ====== -->
+            <div class="options" id="loginOptions">
+                <label>
+                    <input type="checkbox" id="rememberMe">
+                    مرا به خاطر بسپار
+                </label>
+                <a href="#" id="forgotPassword">فراموشی رمز؟</a>
+            </div>
+
+            <!-- ====== دکمه اصلی ====== -->
+            <button type="submit" class="login-btn" id="submitBtn">ورود به حساب</button>
+
+        </form>
+
+        <!-- ====== جداکننده ====== -->
+        <div class="divider">
+            <span>یا</span>
+        </div>
+
+        <!-- ====== تغییر حالت ====== -->
+        <div class="register">
+            <span id="switchText">حساب کاربری ندارید؟</span>
+            <a href="#" id="switchLink">ثبت‌نام</a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer></footer>
+
+    <!-- ====== اسکریپت‌ها ====== -->
+    <script src="apiform.js"></script>
+    <script src="form.js"></script>
+
+</body>
+
+</html>

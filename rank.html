@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول رتبه‌بندی | بابیس نت</title>
+    <meta name="description" content="جدول رتبه‌بندی کاربران بابیس نت - برترین پیش‌بینی‌کنندگان فوتبال">
+    <meta name="theme-color" content="#071A35">
+
+    <meta property="og:title" content="جدول رتبه‌بندی | بابیس نت">
+    <meta property="og:description" content="جدول رتبه‌بندی کاربران بابیس نت">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fa_IR">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <link rel="stylesheet" href="rank.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="home.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i></a>
+        <div class="logo-box"><img src="logo.png" alt="بابیس نت" width="65" height="65"></div>
+        <div class="user-info">
+            <div class="currency"><img src="proball.png" alt="پروبال" width="42" height="42"><span id="proball-amount">0</span></div>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header"><h1>جدول رتبه‌بندی</h1><p>برترین پیش‌بینی‌کنندگان ماه</p></div>
+        <div class="top-three" id="topThree"></div>
+        <div class="rank-list" id="rankList"></div>
+    </main>
+
+    <!-- مودال اطلاعات کاربر -->
+    <div class="modal-overlay" id="userModal"><div class="modal-box"><div class="modal-header"><h3 id="modalUsername">نام کاربر</h3><button class="modal-close-btn" id="closeUserModal">✕</button></div><div class="modal-body" id="modalBody"></div></div></div>
+
+    <!-- نوار پایین با آیکون‌های دوگانه -->
+    <nav class="bottom-nav" role="navigation" aria-label="ناوبری اصلی">
+        <a href="home.html" class="nav-item" aria-label="صفحه اصلی">
+            <img src="homes.png" alt="خانه" class="nav-icon">
+            <img src="homes.png" alt="خانه" class="nav-icon-active" style="display:none;">
+        </a>
+        <a href="game.html" class="nav-item" aria-label="مسابقات">
+            <img src="game.png" alt="مسابقات" class="nav-icon">
+            <img src="games.png" alt="مسابقات" class="nav-icon-active" style="display:none;">
+        </a>
+        <a href="rank.html" class="nav-item active" aria-label="جدول رتبه‌بندی">
+            <img src="jam.png" alt="جدول" class="nav-icon">
+            <img src="jams.png" alt="جدول" class="nav-icon-active" style="display:none;">
+        </a>
+        <a href="shop.html" class="nav-item" aria-label="فروشگاه">
+            <img src="shope.png" alt="فروشگاه" class="nav-icon">
+            <img src="shopes.png" alt="فروشگاه" class="nav-icon-active" style="display:none;">
+        </a>
+        <a href="profile.html" class="nav-item" aria-label="پروفایل کاربر">
+            <img src="karbar.png" alt="پروفایل" class="nav-icon">
+            <img src="karbars.png" alt="پروفایل" class="nav-icon-active" style="display:none;">
+        </a>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="side-menu" id="sideMenu" role="navigation" aria-label="منوی اصلی">
+        <div class="menu-header"><button class="menu-close-btn" id="menuCloseBtn">✕</button></div>
+        <ul class="menu-items">
+            <li><a href="home.html"><img src="homes.png" alt="خانه" class="menu-icon"> خانه</a></li>
+            <li><a href="game.html"><img src="game.png" alt="مسابقات" class="menu-icon"> مسابقات</a></li>
+            <li><a href="rank.html" class="active-page"><img src="jam.png" alt="جدول" class="menu-icon"> جدول رتبه‌بندی</a></li>
+            <li><a href="shop.html"><img src="shope.png" alt="فروشگاه" class="menu-icon"> فروشگاه</a></li>
+            <li><a href="profile.html"><img src="karbar.png" alt="پروفایل" class="menu-icon"> پروفایل</a></li>
+            <li style="margin-top:20px; border-top:1px solid var(--glass-border); padding-top:12px;">
+                <a href="#" id="menuSupport"><img src="call.png" alt="پشتیبانی" class="menu-icon"> پشتیبانی</a>
+                <a href="#" id="menuPages"><img src="page.png" alt="صفحات ما" class="menu-icon"> صفحات ما</a>
+                <a href="#" id="menuInvite"><img src="friend.png" alt="دعوت دوستان" class="menu-icon"> دعوت دوستان</a>
+                <a href="#" id="menuGuide"><img src="help.png" alt="راهنمایی" class="menu-icon"> راهنمایی</a>
+                <a href="#" id="menuRules"><img src="ghan.png" alt="قوانین" class="menu-icon"> قوانین</a>
+                <a href="#" id="menuGift"><img src="gift.png" alt="جوایز" class="menu-icon"> جوایز</a>
+            </li>
+            <li style="margin-top:20px; border-top:1px solid var(--glass-border); padding-top:12px;">
+                <a href="#" id="menuLogout" style="color:#FF6B6B;"><img src="exit.png" alt="خروج" class="menu-icon"> خروج از حساب</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="modal-overlay" id="modalOverlay"><div class="modal-box"><div class="modal-header"><h3 id="modalTitle">عنوان</h3><button class="modal-close-btn" id="modalCloseBtn">✕</button></div><div class="modal-body" id="modalBody">محتوای مودال</div></div></div>
+
+    <script src="api.js"></script>
+    <script src="rank.js"></script>
+</body>
+
+</html>

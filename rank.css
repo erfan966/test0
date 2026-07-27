@@ -1,0 +1,542 @@
+/* =========================
+   بابیس نت - جدول رتبه‌بندی
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    direction: rtl;
+    font-family: "Tahoma", sans-serif;
+    background: linear-gradient(160deg, #071A2B, #0B2942, #06251F);
+    color: #ffffff;
+    min-height: 100vh;
+    padding-bottom: 90px;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* =========================
+   هدر
+========================= */
+.header {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-btn {
+    font-size: 22px;
+    color: rgba(255,255,255,0.8);
+    padding: 6px 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.back-btn:active {
+    transform: scale(0.95);
+}
+
+.logo-box img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.currency {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.10);
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.currency img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.currency span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* =========================
+   نوار پایین (ثابت)
+========================= */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(11, 41, 66, 0.85);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.nav-item.active {
+    transform: scale(1.1);
+}
+
+.nav-icon {
+    display: block;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.nav-icon-active {
+    display: none;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.nav-item.active .nav-icon {
+    display: none !important;
+}
+
+.nav-item.active .nav-icon-active {
+    display: block !important;
+}
+
+/* =========================
+   منوی کناری
+========================= */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    background: linear-gradient(160deg, #0B2942, #06251F);
+    border-left: 1px solid rgba(255,255,255,0.12);
+    padding: 30px 20px;
+    transition: right 0.4s ease;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.side-menu.open {
+    right: 0;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.menu-close-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 8px;
+}
+
+.menu-items {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-items li {
+    margin-bottom: 6px;
+}
+
+.menu-items a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    color: rgba(255,255,255,0.8);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.menu-items a:hover {
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
+}
+
+.menu-items a .menu-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.menu-items a.active-page {
+    background: rgba(0,184,148,0.15);
+    color: #00B894;
+}
+
+/* =========================
+   محتوای اصلی
+========================= */
+main {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.page-header {
+    margin-bottom: 15px;
+}
+
+.page-header h1 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.page-header p {
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+}
+
+.top-three {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.top-card {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 18px;
+    padding: 14px 10px;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.top-card:active {
+    transform: scale(0.96);
+}
+
+.top-card .rank-badge {
+    font-size: 28px;
+    display: block;
+}
+
+.top-card .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 6px auto;
+    border: 2px solid rgba(255,255,255,0.10);
+}
+
+.top-card .name {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.top-card .score {
+    font-size: 13px;
+    font-weight: 600;
+    color: #00B894;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.top-card .detail {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+}
+
+.top-card.gold {
+    border-color: #FFD700;
+    background: rgba(255,215,0,0.08);
+}
+.top-card.silver {
+    border-color: #C0C0C0;
+    background: rgba(192,192,192,0.06);
+}
+.top-card.bronze {
+    border-color: #CD7F32;
+    background: rgba(205,127,50,0.06);
+}
+
+.rank-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rank-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.04);
+    cursor: pointer;
+}
+
+.rank-item:active {
+    transform: scale(0.98);
+}
+
+.rank-number {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+    min-width: 28px;
+    text-align: center;
+}
+
+.rank-item .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.06);
+}
+
+.rank-item .info {
+    flex: 1;
+}
+
+.rank-item .info .name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.rank-item .info .detail {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+}
+
+.rank-item .score {
+    font-size: 14px;
+    font-weight: 700;
+    color: #00B894;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.score-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+/* =========================
+   مودال
+========================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-box {
+    background: linear-gradient(160deg, #0B2942, #06251F);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    max-width: 420px;
+    padding: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transform: scale(0.9) translateY(20px);
+    transition: 0.3s;
+}
+
+.modal-overlay.active .modal-box {
+    transform: scale(1) translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.modal-header h3 {
+    font-size: 20px;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 26px;
+    cursor: pointer;
+    padding: 0 8px;
+    opacity: 0.6;
+}
+
+.modal-close-btn:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    color: rgba(255,255,255,0.9);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.modal-body .modal-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 12px;
+    display: block;
+    border: 2px solid rgba(255,255,255,0.10);
+}
+
+.modal-body .modal-info {
+    text-align: center;
+}
+
+.modal-body .modal-info .modal-name {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.modal-body .modal-info .modal-uid {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+}
+
+.modal-body .modal-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.modal-body .modal-stats .stat {
+    text-align: center;
+}
+
+.modal-body .modal-stats .stat .num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #00B894;
+}
+
+.modal-body .modal-stats .stat .label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+}
+
+/* =========================
+   ریسپانسیو
+========================= */
+@media (max-width: 400px) {
+    .nav-icon,
+    .nav-icon-active {
+        width: 48px;
+        height: 48px;
+    }
+    .top-card .avatar {
+        width: 44px;
+        height: 44px;
+    }
+    .rank-item .avatar {
+        width: 32px;
+        height: 32px;
+    }
+}

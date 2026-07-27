@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروفایل | بابیس نت</title>
+    <meta name="description" content="پروفایل کاربری بابیس نت - مشاهده اطلاعات، آمار، مدال‌ها، ویترین توپ طلا و سابقه پیش‌بینی">
+    <meta name="theme-color" content="#071A35">
+
+    <meta property="og:title" content="پروفایل | بابیس نت">
+    <meta property="og:description" content="پروفایل کاربری بابیس نت">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fa_IR">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <link rel="stylesheet" href="profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="home.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i></a>
+        <div class="logo-box"><img src="logo.png" alt="بابیس نت" width="65" height="65"></div>
+        <div class="user-info">
+            <div class="currency"><img src="ballpoint.png" alt="بال پوینت" width="42" height="42"><span id="ballpoint-amount">0</span></div>
+            <div class="currency"><img src="proball.png" alt="پروبال" width="42" height="42"><span id="proball-amount">0</span></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- کارت پروفایل -->
+        <section class="profile-card">
+            <div class="profile-avatar"><img src="hich.png" alt="پروفایل کاربر" id="profileImage"><button class="edit-avatar-btn" id="editAvatarBtn"><i class="fa-solid fa-camera"></i></button></div>
+            <div class="profile-info">
+                <div class="name-level-container">
+                    <h2 id="username">کاربر</h2>
+                    <div class="level-container" id="levelContainer">
+                        <div class="level-icon-wrapper"><img src="level.webp" alt="لول" class="level-icon" id="levelIcon"><span class="level-number" id="levelNumber">1</span></div>
+                    </div>
+                </div>
+                <p class="uid" id="userUID">BABIS-12345</p>
+                <button class="edit-name-btn" id="editNameBtn"><i class="fa-solid fa-pen"></i> ویرایش نام</button>
+            </div>
+            <div class="xp-progress-container">
+                <div class="xp-info"><span class="xp-current" id="xpCurrent">0</span><span class="xp-separator">/</span><span class="xp-required" id="xpRequired">15</span><span class="xp-label">XP</span></div>
+                <div class="xp-progress-bar"><div class="xp-progress-fill" id="xpProgressFill" style="width:0%;"></div></div>
+            </div>
+            <div class="quick-stats">
+                <div class="stat-item"><span class="stat-number" id="predictCount">0</span><span class="stat-label">پیش‌بینی</span></div>
+                <div class="stat-item"><span class="stat-number" id="accuracyPercent">0%</span><span class="stat-label">دقت</span></div>
+                <div class="stat-item"><span class="stat-number" id="userRank">#--</span><span class="stat-label">رتبه</span></div>
+            </div>
+        </section>
+
+        <!-- مدال‌ها -->
+        <section class="badges-section"><div class="medals-box"><h3>مدال‌ها</h3><div class="medals-container" id="medalsContainer"></div></div></section>
+
+        <!-- توپ طلا -->
+        <section class="golden-unified-section">
+            <div class="golden-unified-header"><img src="gold.webp" alt="توپ طلا" class="gold-icon" width="50" height="50"><span class="gold-label">توپ طلا</span><span class="gold-count" id="goldCount">0</span></div>
+            <div class="golden-unified-container" id="goldenUnifiedContainer"></div>
+        </section>
+
+        <!-- انتخاب پروفایل -->
+        <section class="profile-select-section"><h3>انتخاب پروفایل</h3><div class="profile-select-container" id="profileSelectContainer"></div></section>
+
+        <!-- سابقه پیش‌بینی -->
+        <section class="history-section"><h3>سابقه پیش‌بینی</h3><div class="history-container" id="historyContainer"></div></section>
+
+        <!-- دعوت دوستان و جستجوی UID -->
+        <section class="referral-section">
+            <div class="referral-box"><h3>دعوت دوستان</h3><p>کد معرف شما:</p><div class="referral-code" id="referralCode">BABIS-12345</div><button class="copy-btn" id="copyReferralBtn"><i class="fa-regular fa-copy"></i> کپی</button></div>
+            <div class="search-box"><h3>جستجوی دوستان</h3><div class="search-input-group"><input type="text" id="searchUID" placeholder="UID دوست خود را وارد کنید"><button id="searchBtn"><i class="fa-solid fa-search"></i></button></div><div id="searchResult" class="search-result"></div></div>
+        </section>
+    </main>
+
+    <!-- مودال‌ها -->
+    <div class="modal-overlay" id="editNameModal"><div class="modal-box"><div class="modal-header"><h3>ویرایش نام</h3><button class="modal-close-btn" id="closeEditNameModal">✕</button></div><div class="modal-body"><input type="text" id="newNameInput" placeholder="نام جدید" maxlength="30"><button class="save-btn" id="saveNameBtn">ذخیره</button></div></div></div>
+    <div class="modal-overlay" id="messageModal"><div class="modal-box"><div class="modal-header"><h3 id="msgTitle">پیام</h3><button class="modal-close-btn" id="closeMsgModal">✕</button></div><div class="modal-body" id="msgBody"></div></div></div>
+
+    <!-- نوار پایین با آیکون‌های دوگانه -->
+    <nav class="bottom-nav" role="navigation" aria-label="ناوبری اصلی">
+        <a href="home.html" class="nav-item" aria-label="صفحه اصلی">
+            <img src="homes.png" alt="خانه" class="nav-icon">
+            <img src="homes.png" alt="خانه" class="nav-icon-active" style="display:none;">
+        </a>
+        <a href="game.html" class="nav-item" aria-label="مسابقات">
+            <img src="game.png" alt="مسابقات" class="nav-icon">
+            <img src="games.png" alt="مسابقات" class="nav-icon-active" style="display:none;">
+        </a>
+        <a href="rank.html" class="nav-item" aria-label="جدول رتبه‌بندی">
+            <img src="jam.png" alt="جدول" class="nav-icon">
+            <img src="jams.png" alt="جدول" class="nav-icon-active" style="display:none;">
+        </a>
+        <a href="shop.html" class="nav-item" aria-label="فروشگاه">
+            <img src="shope.png" alt="فروشگاه" class="nav-icon">
+            <img src="shopes.png" alt="فروشگاه" class="nav-icon-active" style="display:none;">
+        </a>
+        <a href="profile.html" class="nav-item active" aria-label="پروفایل کاربر">
+            <img src="karbar.png" alt="پروفایل" class="nav-icon">
+            <img src="karbars.png" alt="پروفایل" class="nav-icon-active" style="display:none;">
+        </a>
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <nav class="side-menu" id="sideMenu" role="navigation" aria-label="منوی اصلی">
+        <div class="menu-header"><button class="menu-close-btn" id="menuCloseBtn">✕</button></div>
+        <ul class="menu-items">
+            <li><a href="home.html"><img src="homes.png" alt="خانه" class="menu-icon"> خانه</a></li>
+            <li><a href="game.html"><img src="game.png" alt="مسابقات" class="menu-icon"> مسابقات</a></li>
+            <li><a href="rank.html"><img src="jam.png" alt="جدول" class="menu-icon"> جدول رتبه‌بندی</a></li>
+            <li><a href="shop.html"><img src="shope.png" alt="فروشگاه" class="menu-icon"> فروشگاه</a></li>
+            <li><a href="profile.html" class="active-page"><img src="karbar.png" alt="پروفایل" class="menu-icon"> پروفایل</a></li>
+            <li style="margin-top:20px; border-top:1px solid var(--glass-border); padding-top:12px;">
+                <a href="#" id="menuSupport"><img src="call.png" alt="پشتیبانی" class="menu-icon"> پشتیبانی</a>
+                <a href="#" id="menuPages"><img src="page.png" alt="صفحات ما" class="menu-icon"> صفحات ما</a>
+                <a href="#" id="menuInvite"><img src="friend.png" alt="دعوت دوستان" class="menu-icon"> دعوت دوستان</a>
+                <a href="#" id="menuGuide"><img src="help.png" alt="راهنمایی" class="menu-icon"> راهنمایی</a>
+                <a href="#" id="menuRules"><img src="ghan.png" alt="قوانین" class="menu-icon"> قوانین</a>
+                <a href="#" id="menuGift"><img src="gift.png" alt="جوایز" class="menu-icon"> جوایز</a>
+            </li>
+            <li style="margin-top:20px; border-top:1px solid var(--glass-border); padding-top:12px;">
+                <a href="#" id="menuLogout" style="color:#FF6B6B;"><img src="exit.png" alt="خروج" class="menu-icon"> خروج از حساب</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="modal-overlay" id="modalOverlay"><div class="modal-box"><div class="modal-header"><h3 id="modalTitle">عنوان</h3><button class="modal-close-btn" id="modalCloseBtn">✕</button></div><div class="modal-body" id="modalBody">محتوای مودال</div></div></div>
+
+    <script src="api.js"></script>
+    <script src="profile.js"></script>
+</body>
+
+</html>
